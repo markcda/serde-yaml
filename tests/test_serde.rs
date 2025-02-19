@@ -283,11 +283,11 @@ fn test_multiline_string() {
     };
     let yaml = indoc! {"
         trailing_newline: |
-          aaa
-          bbb
+            aaa
+            bbb
         no_trailing_newline: |-
-          aaa
-          bbb
+            aaa
+            bbb
     "};
     test_serde(&thing, yaml);
 }
@@ -320,12 +320,12 @@ fn test_strings_needing_quote() {
 fn test_nested_vec() {
     let thing = vec![vec![1, 2, 3], vec![4, 5, 6]];
     let yaml = indoc! {"
-        - - 1
-          - 2
-          - 3
-        - - 4
-          - 5
-          - 6
+        -   - 1
+            - 2
+            - 3
+        -   - 4
+            - 5
+            - 6
     "};
     test_serde(&thing, yaml);
 }
@@ -345,7 +345,7 @@ fn test_nested_struct() {
     };
     let yaml = indoc! {"
         inner:
-          v: 512
+            v: 512
     "};
     test_serde(&thing, yaml);
 }
@@ -494,7 +494,7 @@ fn test_tagged_map_value() {
     };
     let yaml = indoc! {"
         profile: !ClassValidator
-          class_name: ApplicationConfig
+            class_name: ApplicationConfig
     "};
     test_serde(&thing, yaml);
 }
@@ -552,8 +552,8 @@ fn test_mapping() {
 
     let yaml = indoc! {"
         substructure:
-          a: foo
-          b: bar
+            a: foo
+            b: bar
     "};
 
     test_serde(&thing, yaml);
