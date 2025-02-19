@@ -18,7 +18,7 @@ indexmap = "2.2.1"
 itoa = "1.0"
 ryu = "1.0"
 serde = "1.0.195"
-unsafe-libyaml = { git = "https://github.com/markcda/unsafe-libyaml.git", branch = "feat/different-indents" }
+unsafe-libyaml = { git = "https://github.com/markcda/unsafe-libyaml.git", branch = "feat/only-indents" }
 
 [dev-dependencies]
 anyhow = "1.0.79"
