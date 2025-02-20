@@ -180,11 +180,7 @@ fn test_char() {
 #[test]
 fn test_vec() {
     let thing = vec![1, 2, 3];
-    let yaml = indoc! {"
-        - 1
-        - 2
-        - 3
-    "};
+    let yaml = "- 1\n- 2\n- 3\n";
     test_serde(&thing, yaml);
 }
 
@@ -319,14 +315,7 @@ fn test_strings_needing_quote() {
 #[test]
 fn test_nested_vec() {
     let thing = vec![vec![1, 2, 3], vec![4, 5, 6]];
-    let yaml = indoc! {"
-        - - 1
-          - 2
-          - 3
-        - - 4
-          - 5
-          - 6
-    "};
+    let yaml = "- - 1\n  - 2\n  - 3\n- - 4\n  - 5\n  - 6\n";
     test_serde(&thing, yaml);
 }
 
@@ -370,21 +359,14 @@ fn test_nested_enum() {
 #[test]
 fn test_option() {
     let thing = vec![Some(1), None, Some(3)];
-    let yaml = indoc! {"
-        - 1
-        - null
-        - 3
-    "};
+    let yaml = "- 1\n- null\n- 3\n";
     test_serde(&thing, yaml);
 }
 
 #[test]
 fn test_unit() {
     let thing = vec![(), ()];
-    let yaml = indoc! {"
-        - null
-        - null
-    "};
+    let yaml = "- null\n- null\n";
     test_serde(&thing, yaml);
 }
 
