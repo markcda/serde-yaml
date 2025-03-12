@@ -36,6 +36,9 @@ pub(crate) enum ErrorImpl {
     EmptyTag,
     FailedToParseNumber,
 
+    #[cfg(feature = "pretty")]
+    FailedToPrettify,
+
     Shared(Arc<ErrorImpl>),
 }
 
@@ -242,6 +245,9 @@ impl ErrorImpl {
             ErrorImpl::EmptyTag => f.write_str("empty YAML tag is not allowed"),
             ErrorImpl::FailedToParseNumber => f.write_str("failed to parse YAML number"),
             ErrorImpl::Shared(_) => unreachable!(),
+
+            #[cfg(feature = "pretty")]
+            ErrorImpl::FailedToPrettify => f.write_str("failed to prettify YAML"),
         }
     }
 

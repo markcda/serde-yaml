@@ -712,3 +712,16 @@ where
     to_writer(&mut vec, value)?;
     String::from_utf8(vec).map_err(|error| error::new(ErrorImpl::FromUtf8(error)))
 }
+
+/// Serialize the given data structure as a String of YAML with prettify.
+#[cfg(feature = "pretty")]
+pub fn to_string_pretty<T>(value: &T) -> Result<String>
+where
+    T: ?Sized + ser::Serialize,
+{
+    let mut vec = Vec::with_capacity(128);
+    to_writer(&mut vec, value)?;
+    String::from_utf8(vec)
+      .map_err(|error| error::new(ErrorImpl::FromUtf8(error)))
+      .and_then(|text| pretty_yaml::format_text(&text, &pretty_yaml::config::FormatOptions::default()).map_err(|_| error::new(ErrorImpl::FailedToPrettify)))
+}
