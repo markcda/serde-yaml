@@ -1,6 +1,6 @@
 [package]
-name = "serde_yaml"
-version = "0.9.36"
+name = "serde_pretty_yaml"
+version = "0.9.37"
 authors = [
   "David Tolnay <dtolnay@gmail.com>",
   "Klimenty Titov <aclo.create@gmail.com>",
@@ -23,7 +23,7 @@ itoa = "1.0"
 pretty_yaml = { optional = true, version = "0.5" }
 ryu = "1.0"
 serde = "1.0.195"
-unsafe-libyaml = { git = "https://github.com/markcda/unsafe-libyaml.git" }
+unsafe-libyaml = "0.2.11"
 
 [dev-dependencies]
 anyhow = "1.0.79"
