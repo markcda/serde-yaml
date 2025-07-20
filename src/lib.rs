@@ -163,6 +163,10 @@
 pub use crate::de::{from_reader, from_slice, from_str, Deserializer};
 pub use crate::error::{Error, Location, Result};
 pub use crate::ser::{to_string, to_writer, Serializer};
+
+#[cfg(feature = "pretty")]
+pub use crate::ser::to_string_pretty;
+
 #[doc(inline)]
 pub use crate::value::{from_value, to_value, Index, Number, Sequence, Value};
 
@@ -187,5 +191,5 @@ mod private {
     impl Sealed for str {}
     impl Sealed for String {}
     impl Sealed for crate::Value {}
-    impl<'a, T> Sealed for &'a T where T: ?Sized + Sealed {}
+    impl<T> Sealed for &T where T: ?Sized + Sealed {}
 }

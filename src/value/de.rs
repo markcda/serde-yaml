@@ -492,7 +492,7 @@ struct EnumDeserializer<'a> {
     value: Option<Value>,
 }
 
-impl<'a, 'de> EnumAccess<'de> for EnumDeserializer<'a> {
+impl<'de> EnumAccess<'de> for EnumDeserializer<'_> {
     type Error = Error;
     type Variant = VariantDeserializer;
 
@@ -1228,7 +1228,7 @@ impl Value {
     }
 
     #[cold]
-    pub(crate) fn unexpected(&self) -> Unexpected {
+    pub(crate) fn unexpected(&self) -> Unexpected<'_> {
         match self {
             Value::Null => Unexpected::Unit,
             Value::Bool(b) => Unexpected::Bool(*b),
